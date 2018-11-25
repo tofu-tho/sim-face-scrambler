@@ -6,6 +6,8 @@ class App extends Component {
     numOfSims: 1,
     femaleChance: 50,
     temperStrength: 33,
+    modifierRangeMinimum: -10,
+    modifierRangeMaximum: 10,
   }
 
   render() {
@@ -24,6 +26,14 @@ class App extends Component {
             <input onInput={this.setFemaleChance} value={this.state.femaleChance} type="range" id="femaleChance" name="femaleChance" min="0" max="100"></input>
             <div>Chance of female: {this.getFemaleChance()}</div>
             <div>Chance of male: {this.getMaleChance()}</div>
+          </div>
+          <div>
+            <label>Choose default modifier range (minimum):</label>
+            <input onInput={this.setModifierRangeMinimum} value={this.state.modifierRangeMinimum} type="number" id="modifierRange" name="modifierRange" min="-10" max="10"></input>
+          </div>
+          <div>
+            <label>Choose default modifier range (maximum):</label>
+            <input onInput={this.setModifierRangeMaximum} value={this.state.modifierRangeMaximum} type="number" id="modifierRange" name="modifierRange" min="-10" max="10"></input>
           </div>
           <div>
             <label>Choose temper strength:</label>
@@ -62,6 +72,52 @@ class App extends Component {
     })
   }
 
+  setModifierRangeMinimum = (event) => {
+    if (event.target.value === "") {
+      this.setState({
+        modifierRangeMinimum: "",
+      })
+    }
+    else if (parseInt(event.target.value) > 10) {
+      this.setState({
+        modifierRangeMinimum: 10,
+      })
+    }
+    else if (parseInt(event.target.value) < -10) {
+      this.setState({
+        modifierRangeMinimum: -10,
+      })
+    }
+    else {
+      this.setState({
+        modifierRangeMinimum: parseInt(event.target.value)
+      })
+    }
+  }
+
+  setModifierRangeMaximum = (event) => {
+    if (event.target.value === "") {
+      this.setState({
+        modifierRangeMaximum: "",
+      })
+    }
+    else if (parseInt(event.target.value) > 10) {
+      this.setState({
+        modifierRangeMaximum: 10,
+      })
+    }
+    else if (parseInt(event.target.value) < -10) {
+      this.setState({
+        modifierRangeMaximum: -10,
+      })
+    }
+    else {
+      this.setState({
+        modifierRangeMaximum: parseInt(event.target.value)
+      })
+    }
+  }
+
   setTemperStrength = (event) => {
     this.setState({
       temperStrength: parseInt(event.target.value)
@@ -81,7 +137,13 @@ class App extends Component {
   }
 
   isInvalid = () => {
-    return this.state.numOfSims === ""
+    if (this.state.numOfSims === "") {
+      return true;
+    }
+    if (this.state.modifierRangeMinimum > this.state.modifierRangeMaximum) {
+      return true;
+    }
+    return false;
   }
 
   scramble = () => {

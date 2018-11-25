@@ -11,10 +11,10 @@ function generateSim(scrambleOptions) {
   const uiDescriber = new UiDescriber();
   for (let i = 0; i < scrambleOptions.numOfSims; i++) {
     createNewSim(uiInteractor, uiDescriber);
-    const { femaleChance, temperStrength } = scrambleOptions
+    const { femaleChance, temperStrength, modifierRangeMinimum, modifierRangeMaximum } = scrambleOptions
     const gender = pickGender(uiInteractor, uiDescriber, femaleChance);
     pickTemplate(uiInteractor, uiDescriber, gender);
-    scrambleFace(uiInteractor);
+    scrambleFace(uiInteractor, modifierRangeMinimum, modifierRangeMaximum);
     temperFace(uiInteractor, uiDescriber, gender, temperStrength);
     saveSim(uiInteractor, uiDescriber);
   }
@@ -71,7 +71,7 @@ function pickTemplate(uiInteractor, uiDescriber, gender) {
   }
 }
 
-function scrambleFace(uiInteractor) {
+function scrambleFace(uiInteractor, modifierRangeMinimum, modifierRangeMaximum) {
   uiInteractor.wait(500);
   uiInteractor.click(uiStructure.modifiersTab);
 
@@ -80,18 +80,21 @@ function scrambleFace(uiInteractor) {
     uiInteractor.click(modifyTab.button);
     modifyTab.pages.forEach((features) => {
       features.forEach((feature) => {
-        const change = random.generateNumber(1, 10);
-        const directionButton = random.generateBoolean() ? feature.increase : feature.decrease;
-
-        for (let i = 0; i < change; i++) {
-          uiInteractor.wait(25);
-          uiInteractor.click(directionButton);
-        }
+        const change = random.generateNumber(modifierRangeMinimum, modifierRangeMaximum);
+        adjustFeatureValue(uiInteractor, feature, change);
       })
       uiInteractor.wait(50);
       uiInteractor.click(uiStructure.nextButton);
     })
   })
+}
+
+function adjustFeatureValue(uiInteractor, feature, change) {
+  const directionButton = change > 0 ? feature.increase : feature.decrease;
+  for (let i = 0; i < Math.abs(change); i++) {
+    uiInteractor.wait(25);
+    uiInteractor.click(directionButton);
+  }
 }
 
 function temperFace(uiInteractor, uiDescriber, gender, temperStrength) {

@@ -13,6 +13,8 @@ if (process.argv[2] === 'getMouseCoordinates') {
     numOfSims: 1,
     femaleChance: 50,
     temperStrength: 33,
+    modifierRangeMinimum: -10,
+    modifierRangeMaximum: 10,
   };
   generateSim(options);
 }
