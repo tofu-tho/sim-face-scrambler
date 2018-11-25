@@ -12,6 +12,7 @@ if (process.argv[2] === 'getMouseCoordinates') {
   const options = {
     numOfSims: 1,
     femaleChance: 50,
+    temperStrength: 33,
   };
   generateSim(options);
 }

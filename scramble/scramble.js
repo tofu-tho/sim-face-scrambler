@@ -11,11 +11,11 @@ function generateSim(scrambleOptions) {
   const uiDescriber = new UiDescriber();
   for (let i = 0; i < scrambleOptions.numOfSims; i++) {
     createNewSim(uiInteractor, uiDescriber);
-    const { femaleChance } = scrambleOptions
+    const { femaleChance, temperStrength } = scrambleOptions
     const gender = pickGender(uiInteractor, uiDescriber, femaleChance);
     pickTemplate(uiInteractor, uiDescriber, gender);
     scrambleFace(uiInteractor);
-    temperFace(uiInteractor, uiDescriber, gender);
+    temperFace(uiInteractor, uiDescriber, gender, temperStrength);
     saveSim(uiInteractor, uiDescriber);
   }
 }
@@ -94,7 +94,7 @@ function scrambleFace(uiInteractor) {
   })
 }
 
-function temperFace(uiInteractor, uiDescriber, gender) {
+function temperFace(uiInteractor, uiDescriber, gender, temperStrength) {
   uiInteractor.wait(500);
   uiInteractor.click(uiStructure.templatesTabButton)
   uiInteractor.wait(500);
@@ -116,7 +116,7 @@ function temperFace(uiInteractor, uiDescriber, gender) {
         const templateIndex = templateOffset + relativeTemplateIndex;
         if (templateIndex === indexesToTemper[0] || templateIndex === indexesToTemper[1]) {
           uiInteractor.wait(500);
-          uiInteractor.drag(template.start, template.end)
+          uiInteractor.drag(template.start, template.getEnd(temperStrength / 100))
           uiInteractor.wait(500);
         }
       })

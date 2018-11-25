@@ -138,36 +138,39 @@ const eighthTemplate = {
   button: {x: 894, y: 453}
 }
 
-function getTemplateDragRange(template, percentage) {
-  const difference = template.xMax - template.xMin;
-  const adjustedDifference = difference * percentage;
+function getTemplateDragRange(template) {
   const adjustedTemplate = {
     start: {x: template.xMin, y: template.y},
-    end: {x: template.xMin + adjustedDifference, y: template.y},
-    button: template.button
+    button: template.button,
+    getEnd: (percentage) => {
+      const difference = template.xMax - template.xMin;
+      const adjustedDifference = difference * percentage;
+      return {
+        x: template.xMin + adjustedDifference,
+        y: template.y
+      }
+    },
   }
   return adjustedTemplate;
 }
 
-const percentage = .33;
-
 const faceTemplatesPageLengthFive = [
-  getTemplateDragRange(firstTemplate, percentage),
-  getTemplateDragRange(secondTemplate, percentage),
-  getTemplateDragRange(thirdTemplate, percentage),
-  getTemplateDragRange(fourthTemplate, percentage),
-  getTemplateDragRange(fifthTemplate, percentage),
+  getTemplateDragRange(firstTemplate),
+  getTemplateDragRange(secondTemplate),
+  getTemplateDragRange(thirdTemplate),
+  getTemplateDragRange(fourthTemplate),
+  getTemplateDragRange(fifthTemplate),
 ]
 
 const faceTemplatesPageLengthEight = [
-  getTemplateDragRange(firstTemplate, percentage),
-  getTemplateDragRange(secondTemplate, percentage),
-  getTemplateDragRange(thirdTemplate, percentage),
-  getTemplateDragRange(fourthTemplate, percentage),
-  getTemplateDragRange(fifthTemplate, percentage),
-  getTemplateDragRange(sixthTemplate, percentage),
-  getTemplateDragRange(seventhTemplate, percentage),
-  getTemplateDragRange(eighthTemplate, percentage),
+  getTemplateDragRange(firstTemplate),
+  getTemplateDragRange(secondTemplate),
+  getTemplateDragRange(thirdTemplate),
+  getTemplateDragRange(fourthTemplate),
+  getTemplateDragRange(fifthTemplate),
+  getTemplateDragRange(sixthTemplate),
+  getTemplateDragRange(seventhTemplate),
+  getTemplateDragRange(eighthTemplate),
 ]
 
 const templatesPages = [
