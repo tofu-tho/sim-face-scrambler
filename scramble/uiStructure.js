@@ -60,11 +60,11 @@ const twelfthFeature = {
   increase: { x: 913, y: 477 }
 }
 
-pageLengthSeven = [firstFeature, secondFeature, thirdFeature, fourthFeature, fifthFeature, sixthFeature]
+pageLengthSeven = [firstFeature, secondFeature, thirdFeature, fourthFeature, fifthFeature, sixthFeature, seventhFeature]
 pageLengthTen = [firstFeature, secondFeature, thirdFeature, fourthFeature, fifthFeature, sixthFeature, seventhFeature, eighthFeature, ninthFeature, tenthFeature]
 pageLengthTwelve = [firstFeature, secondFeature, thirdFeature, fourthFeature, fifthFeature, sixthFeature, seventhFeature, eighthFeature, ninthFeature, tenthFeature, eleventhFeature, twelfthFeature]
 pageLengthTenMissingSecondItem = [firstFeature, thirdFeature, fourthFeature, fifthFeature, sixthFeature, seventhFeature, eighthFeature, ninthFeature, tenthFeature]
-pageLengthTenMissingSixthItem = [firstFeature, thirdFeature, fourthFeature, fifthFeature, sixthFeature, seventhFeature, eighthFeature, ninthFeature, tenthFeature]
+pageLengthTenMissingSixthItem = [firstFeature, secondFeature, thirdFeature, fourthFeature, fifthFeature, seventhFeature, eighthFeature, ninthFeature, tenthFeature]
 
 const modifyFacePage = [pageLengthTenMissingSecondItem];
 const modifyBrowPage = [pageLengthSeven];

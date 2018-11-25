@@ -78,6 +78,7 @@ function scrambleFace(uiInteractor, modifierRangeMinimum, modifierRangeMaximum) 
   uiStructure.modifyTabs.forEach((modifyTab) => {
     uiInteractor.wait(500);
     uiInteractor.click(modifyTab.button);
+    uiInteractor.wait(500);
     modifyTab.pages.forEach((features) => {
       features.forEach((feature) => {
         const change = random.generateNumber(modifierRangeMinimum, modifierRangeMaximum);
