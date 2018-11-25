@@ -9,6 +9,9 @@ function getMousePosition() {
 if (process.argv[2] === 'getMouseCoordinates') {
   setInterval(getMousePosition, 1000)
 } else {
-  const options = { numOfSims: 1 };
+  const options = {
+    numOfSims: 1,
+    femaleChance: 50,
+  };
   generateSim(options);
 }

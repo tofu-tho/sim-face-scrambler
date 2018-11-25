@@ -11,7 +11,8 @@ function generateSim(scrambleOptions) {
   const uiDescriber = new UiDescriber();
   for (let i = 0; i < scrambleOptions.numOfSims; i++) {
     createNewSim(uiInteractor, uiDescriber);
-    const gender = pickGender(uiInteractor, uiDescriber);
+    const { femaleChance } = scrambleOptions
+    const gender = pickGender(uiInteractor, uiDescriber, femaleChance);
     pickTemplate(uiInteractor, uiDescriber, gender);
     scrambleFace(uiInteractor);
     temperFace(uiInteractor, uiDescriber, gender);
@@ -24,9 +25,10 @@ function createNewSim(uiInteractor, uiDescriber) {
   uiInteractor.click(uiDescriber.getBuildASimButton());
 }
 
-function pickGender(uiInteractor, uiDescriber) {
+function pickGender(uiInteractor, uiDescriber, femaleChance) {
   let gender = null;
-  if (random.generateBoolean()) {
+  const genderRoll = random.generateNumber(0, 100);
+  if (genderRoll <= femaleChance) {
     uiInteractor.click(uiDescriber.getLadyButton());
     gender = "female";
   }
