@@ -15,6 +15,7 @@ if (process.argv[2] === 'getMouseCoordinates') {
     temperStrength: 33,
     modifierRangeMinimum: -10,
     modifierRangeMaximum: 10,
+    modifierOverrides: {}
   };
   generateSim(options);
 }

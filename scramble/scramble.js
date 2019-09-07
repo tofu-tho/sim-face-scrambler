@@ -11,10 +11,10 @@ function generateSim(scrambleOptions) {
   const uiDescriber = new UiDescriber();
   for (let i = 0; i < scrambleOptions.numOfSims; i++) {
     createNewSim(uiInteractor, uiDescriber);
-    const { femaleChance, temperStrength, modifierRangeMinimum, modifierRangeMaximum } = scrambleOptions
+    const { femaleChance, temperStrength, modifierRangeMinimum, modifierRangeMaximum, modifierOverrides } = scrambleOptions
     const gender = pickGender(uiInteractor, uiDescriber, femaleChance);
     pickTemplate(uiInteractor, uiDescriber, gender);
-    scrambleFace(uiInteractor, modifierRangeMinimum, modifierRangeMaximum);
+    scrambleFace(uiInteractor, modifierRangeMinimum, modifierRangeMaximum, modifierOverrides);
     temperFace(uiInteractor, uiDescriber, gender, temperStrength);
     saveSim(uiInteractor, uiDescriber);
   }
@@ -71,7 +71,7 @@ function pickTemplate(uiInteractor, uiDescriber, gender) {
   }
 }
 
-function scrambleFace(uiInteractor, modifierRangeMinimum, modifierRangeMaximum) {
+function scrambleFace(uiInteractor, modifierRangeMinimum, modifierRangeMaximum, modifierOverrides) {
   uiInteractor.wait(500);
   uiInteractor.click(uiStructure.modifiersTab);
 
@@ -81,7 +81,13 @@ function scrambleFace(uiInteractor, modifierRangeMinimum, modifierRangeMaximum) 
     uiInteractor.wait(500);
     modifyTab.pages.forEach((features) => {
       features.forEach((feature) => {
-        const change = random.generateNumber(modifierRangeMinimum, modifierRangeMaximum);
+        let minimum = modifierRangeMinimum
+        let maximum = modifierRangeMaximum;
+        if (modifierOverrides[feature.id]) {
+          minimum = modifierOverrides[feature.id].minimum;
+          maximum = modifierOverrides[feature.id].maximum;
+        }
+        const change = random.generateNumber(minimum, maximum);
         adjustFeatureValue(uiInteractor, feature, change);
       })
       uiInteractor.wait(50);
