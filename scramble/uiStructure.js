@@ -60,18 +60,305 @@ const twelfthFeature = {
   increase: { x: 913, y: 477 }
 }
 
-pageLengthSeven = [firstFeature, secondFeature, thirdFeature, fourthFeature, fifthFeature, sixthFeature, seventhFeature]
-pageLengthTen = [firstFeature, secondFeature, thirdFeature, fourthFeature, fifthFeature, sixthFeature, seventhFeature, eighthFeature, ninthFeature, tenthFeature]
-pageLengthTwelve = [firstFeature, secondFeature, thirdFeature, fourthFeature, fifthFeature, sixthFeature, seventhFeature, eighthFeature, ninthFeature, tenthFeature, eleventhFeature, twelfthFeature]
-pageLengthTenMissingSecondItem = [firstFeature, thirdFeature, fourthFeature, fifthFeature, sixthFeature, seventhFeature, eighthFeature, ninthFeature, tenthFeature]
-pageLengthTenMissingSixthItem = [firstFeature, secondFeature, thirdFeature, fourthFeature, fifthFeature, seventhFeature, eighthFeature, ninthFeature, tenthFeature]
+const modifyFacePage1 = [
+  {
+    name: 'Face Gaunt-Plump',
+    id: 'faceGauntPlump',
+    ...firstFeature,
+  },
+  // {
+  //   name: 'Face Short-Long',
+  //   id: 'faceShortLong',
+  //   ...secondFeature,
+  // },
+  {
+    name: 'Cheek Size',
+    id: 'cheekSize',
+    ...thirdFeature,
+  },
+  {
+    name: 'Lower Face Width',
+    id: 'lowerFaceWidth',
+    ...fourthFeature,
+  },
+  {
+    name: 'Upper Face Width',
+    id: 'upperFaceWidth',
+    ...fifthFeature,
+  },
+  {
+    name: 'Underneck Up-Down',
+    id: 'underneckUpDown',
+    ...sixthFeature,
+  },
+  {
+    name: 'Cheekbone Fwd-Back',
+    id: 'cheekboneFwdBack',
+    ...seventhFeature,
+  },
+  {
+    name: 'Cheekbone Size',
+    id: 'cheekboneSize',
+    ...eighthFeature,
+  },
+  {
+    name: 'Cheekbone Up-Down',
+    id: 'cheekboneUpDown',
+    ...ninthFeature,
+  },
+  {
+    name: 'Ear Size',
+    id: 'earSize',
+    ...tenthFeature,
+  },
+]
 
-const modifyFacePage = [pageLengthTenMissingSecondItem];
-const modifyBrowPage = [pageLengthSeven];
-const modifyEyesPage = [pageLengthTenMissingSixthItem];
-const modifyNosePage = [pageLengthTwelve];
-const modifyMouthPage = [pageLengthTen];
-const modifyJawPage = [pageLengthSeven];
+const modifyBrowPage1 = [
+  {
+    name: 'Brow Thickness',
+    id: 'browThickness',
+    ...firstFeature,
+  },
+  {
+    name: 'Brow Up-Down',
+    id: 'browUpDown',
+    ...secondFeature,
+  },
+  {
+    name: 'Brow Arch',
+    id: 'browArch',
+    ...thirdFeature,
+  },
+  {
+    name: 'Brow Rotate',
+    id: 'browRotate',
+    ...fourthFeature,
+  },
+  {
+    name: 'Brow Orbit Shape',
+    id: 'browOrbitShape',
+    ...fifthFeature,
+  },
+  {
+    name: 'Forehead In-Out',
+    id: 'foreheadInOut',
+    ...sixthFeature,
+  },
+  {
+    name: 'Brow In-Out',
+    id: 'browInOut',
+    ...seventhFeature,
+  }
+]
+
+const modifyEyesPage1 = [
+  {
+    name: 'Eye Size',
+    id: 'eyeSize',
+    ...firstFeature,
+  },
+  {
+    name: 'Eye Width',
+    id: 'eyeWidth',
+    ...secondFeature,
+  },
+  {
+    name: 'Outer Eye Down-Up',
+    id: 'outerEyeDownUp',
+    ...thirdFeature,
+  },
+  {
+    name: 'Eye Closeness',
+    id: 'eyeCloseness',
+    ...fourthFeature,
+  },
+  {
+    name: 'Eyes Up-Down',
+    id: 'eyesUpDown',
+    ...fifthFeature,
+  },
+  // {
+  //   name: 'Orbit Up-Down',
+  //   id: 'orbitUpDown',
+  //   ...sixthFeature,
+  // },
+  {
+    name: 'Eye Deepness',
+    id: 'eyeDeepness',
+    ...seventhFeature,
+  },
+  {
+    name: 'Eyelash Size',
+    id: 'eyelashSize',
+    ...eighthFeature,
+  },
+  {
+    name: 'Eyes Rotate',
+    id: 'eyesRotate',
+    ...ninthFeature,
+  },
+]
+
+const modifyNosePage1 = [
+  {
+    name: 'Nose Size',
+    id: 'noseSize',
+    ...firstFeature,
+  },
+  {
+    name: 'Nose Width',
+    id: 'noseWidth',
+    ...secondFeature,
+  },
+  {
+    name: 'Nostril Width',
+    id: 'nostrilWidth',
+    ...thirdFeature,
+  },
+  {
+    name: 'Nose Length',
+    id: 'noseLength',
+    ...fourthFeature,
+  },
+  {
+    name: 'Nose Up-Down',
+    id: 'noseUpDown',
+    ...fifthFeature,
+  },
+  {
+    name: 'Nose Turned Up-Down',
+    id: 'noseTurnedUpDown',
+    ...sixthFeature,
+  },
+  {
+    name: 'Nose Tip Up-Down',
+    id: 'noseTipUpDown',
+    ...seventhFeature,
+  },
+  {
+    name: 'Nose Tip Turn',
+    id: 'noseTipTurn',
+    ...eighthFeature,
+  },
+  {
+    name: 'Bridge Curve',
+    id: 'bridgeCurve',
+    ...ninthFeature,
+  },
+  {
+    name: 'Bridge In-Out',
+    id: 'bridgeInOut',
+    ...tenthFeature,
+  },
+  {
+    name: 'Bridge Width',
+    id: 'bridgeWidth',
+    ...eleventhFeature,
+  },
+  {
+    name: 'Nose In-Out',
+    id: 'noseInOut',
+    ...twelfthFeature,
+  },
+]
+
+const modifyMouthPage1 = [
+  {
+    name: 'Mouth Width',
+    id: 'mouthWidth',
+    ...firstFeature,
+  },
+  {
+    name: 'Mouth Up-Down',
+    id: 'mouthUpDown',
+    ...secondFeature,
+  },
+  {
+    name: 'Mouth Corner Down-Up',
+    id: 'mouthCornerDownUp',
+    ...thirdFeature,
+  },
+  {
+    name: 'Lips Thickness',
+    id: 'lipsThickness',
+    ...fourthFeature,
+  },
+  {
+    name: 'Upper Lip Pinch',
+    id: 'upperLipPinch',
+    ...fifthFeature,
+  },
+  {
+    name: 'Lower Lip Pinch',
+    id: 'lowerLipPinch',
+    ...sixthFeature,
+  },
+  {
+    name: 'Upper Lip Thickness',
+    id: 'upperLipThickness',
+    ...seventhFeature,
+  },
+  {
+    name: 'Lower Lip Thickness',
+    id: 'lowerLipThickness',
+    ...eighthFeature,
+  },
+  {
+    name: 'Mouth Corner Fwd-Back',
+    id: 'mouthCornerFwdBack',
+    ...ninthFeature,
+  },
+  {
+    name: 'Mouth In-Out',
+    id: 'mouthInOut',
+    ...tenthFeature,
+  },
+]
+
+const modifyJawPage1 = [
+  {
+    name: 'Chin Up-Down',
+    id: 'chinUpDown',
+    ...firstFeature,
+  },
+  {
+    name: 'Chin In-Out',
+    id: 'chinInOut',
+    ...secondFeature,
+  },
+  {
+    name: 'Chin Point',
+    id: 'chinPoint',
+    ...thirdFeature,
+  },
+  {
+    name: 'Jaw In-Out',
+    id: 'jawInOut',
+    ...fourthFeature,
+  },
+  {
+    name: 'Jaw Square-Angled',
+    id: 'jawSquareAngled',
+    ...fifthFeature,
+  },
+  {
+    name: 'Jaw Width',
+    id: 'jawWidth',
+    ...sixthFeature,
+  },
+  {
+    name: 'Jaw Taper',
+    id: 'jawTaper',
+    ...seventhFeature,
+  },
+]
+
+const modifyFacePages = [modifyFacePage1];
+const modifyBrowPages = [modifyBrowPage1];
+const modifyEyesPages = [modifyEyesPage1];
+const modifyNosePages = [modifyNosePage1];
+const modifyMouthPages = [modifyMouthPage1];
+const modifyJawPages = [modifyJawPage1];
 
 const modifyFaceTab = {x: 518, y: 198};
 const modifyBrowTab = { x: 593, y: 198 };
@@ -81,12 +368,12 @@ const modifyMouthTab = { x: 798, y: 198 };
 const modifyJawTab = { x: 868, y: 198};
 
 const modifyTabs = [
-  { button: modifyFaceTab, pages: modifyFacePage },
-  { button: modifyBrowTab, pages: modifyBrowPage },
-  { button: modifyEyesTab, pages: modifyEyesPage },
-  { button: modifyNoseTab, pages: modifyNosePage },
-  { button: modifyMouthTab, pages: modifyMouthPage },
-  { button: modifyJawTab, pages: modifyJawPage }
+  { button: modifyFaceTab, pages: modifyFacePages },
+  { button: modifyBrowTab, pages: modifyBrowPages },
+  { button: modifyEyesTab, pages: modifyEyesPages },
+  { button: modifyNoseTab, pages: modifyNosePages },
+  { button: modifyMouthTab, pages: modifyMouthPages },
+  { button: modifyJawTab, pages: modifyJawPages }
 ]
 
 const firstTemplate = {
