@@ -13,6 +13,34 @@ code {
     monospace;
 }
 
+.App {
+  padding: 30px;
+}
+
 .title-container {
   text-align: center;
+  margin-bottom: 20px;
+
+  h1 {
+    margin: 0;
+  }
+}
+
+.section-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+
+  .quantity-selector {
+    margin: 0 10px;
+  }
+}
+
+.temper-strength-container {
+  display: flex;
+
+  .temper-strength-label {
+    margin: 0 5px;
+  }
 }

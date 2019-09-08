@@ -11,7 +11,7 @@ export default class ScrambleButton extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="section-container">
         <button
           onClick={this.props.scramble}
           disabled={this.props.disabled}

@@ -11,8 +11,9 @@ export default class TemperStrengthSelector extends React.Component {
 
   render() {
     return (
-      <div>
-        <label>Choose temper strength:</label>
+      <div className="temper-strength-container">
+        <div>Tempering strength:</div>
+        <div className="temper-strength-label">0</div>
         <input
           onInput={this.props.setTemperStrength}
           value={this.props.temperStrength}
@@ -20,8 +21,9 @@ export default class TemperStrengthSelector extends React.Component {
           min="0"
           max="100"
         />
+        <div className="temper-strength-label">100</div>
         <div>
-          Temper strength:
+          Selected:
           {` ${this.getTemperStrength()}`}
         </div>
       </div>

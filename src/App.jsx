@@ -55,21 +55,21 @@ class App extends React.Component {
             setFemaleChance={this.setFemaleChance}
             femaleChance={this.state.femaleChance}
           />
+          <ScrambleButton
+            scramble={this.scramble}
+            disabled={this.isInvalid()}
+          />
+          <TemperStrengthSelector
+            setTemperStrength={this.setTemperStrength}
+            temperStrength={this.state.temperStrength}
+          />
           <DefaultModifierRangeSelector
             setModifierRangeMinimum={this.setModifierRangeMinimum}
             setModifierRangeMaximum={this.setModifierRangeMaximum}
             modifierRangeMinimum={this.state.modifierRangeMinimum}
             modifierRangeMaximum={this.state.modifierRangeMaximum}
           />
-          <TemperStrengthSelector
-            setTemperStrength={this.setTemperStrength}
-            temperStrength={this.state.temperStrength}
-          />
           {this.renderModifierOverrides()}
-          <ScrambleButton
-            scramble={this.scramble}
-            disabled={this.isInvalid()}
-          />
         </header>
       </div>
     );

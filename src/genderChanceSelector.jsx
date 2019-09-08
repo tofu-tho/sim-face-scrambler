@@ -11,8 +11,9 @@ export default class GenderChanceSelector extends React.Component {
 
   render() {
     return (
-      <div>
-        <label>Choose gender chance:</label>
+      <div className="section-container">
+        <div>Female</div>
+        <div>{`${this.props.femaleChance}%`}</div>
         <input
           onInput={this.props.setFemaleChance}
           value={this.props.femaleChance}
@@ -20,14 +21,8 @@ export default class GenderChanceSelector extends React.Component {
           min="0"
           max="100"
         />
-        <div>
-          Chance of female:
-          {` ${this.props.femaleChance}`}
-        </div>
-        <div>
-          Chance of male:
-          {` ${this.getMaleChance()}`}
-        </div>
+        <div>Male</div>
+        <div>{this.getMaleChance()}</div>
       </div>
     );
   }

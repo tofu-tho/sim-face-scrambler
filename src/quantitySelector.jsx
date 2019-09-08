@@ -11,15 +11,18 @@ export default class quantitySelector extends React.Component {
 
   render() {
     return (
-      <div>
-        <label>Number of Sims to make (1-10):</label>
-        <input
-          onInput={this.props.setNumOfSims}
-          value={this.props.numOfSims}
-          type="number"
-          min="1"
-          max="10"
-        />
+      <div className="section-container">
+        <div>Generate</div>
+        <div className="quantity-selector">
+          <input
+            onInput={this.props.setNumOfSims}
+            value={this.props.numOfSims}
+            type="number"
+            min="1"
+            max="10"
+          />
+        </div>
+        <div>Sims</div>
       </div>
     );
   }
