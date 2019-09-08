@@ -1,20 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const { object, func } = PropTypes;
+const {
+  string, func, shape, number,
+} = PropTypes;
+
+const modifierShape = shape({
+  name: string.isRequired,
+  id: string.isRequired,
+});
+
+const valueShape = shape({
+  minimum: number.isRequired,
+  maximum: number.isRequired,
+});
 
 export default class ModifierOverride extends React.Component {
   static propTypes = {
-    modifier: object.isRequired,
+    modifier: modifierShape.isRequired,
     setMinimum: func.isRequired,
     setMaximum: func.isRequired,
-    value: object.isRequired,
+    value: valueShape.isRequired,
   }
 
   render() {
     return (
       <div>
-        <label>{this.props.modifier.name} Minimum</label>
+        <label>
+          {this.props.modifier.name}
+          Minimum
+        </label>
         <input
           onInput={this.setMinimum}
           value={this.props.value.minimum}
