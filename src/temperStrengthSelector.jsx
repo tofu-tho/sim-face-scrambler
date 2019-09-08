@@ -20,9 +20,12 @@ export default class TemperStrengthSelector extends React.Component {
           min="0"
           max="100"
         />
-        <div>Temper strength: {this.getTemperStrength()}</div>
+        <div>
+          Temper strength:
+          {` ${this.getTemperStrength()}`}
+        </div>
       </div>
-    )
+    );
   }
 
   getTemperStrength = () => {

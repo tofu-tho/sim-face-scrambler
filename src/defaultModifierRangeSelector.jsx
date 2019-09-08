@@ -13,7 +13,7 @@ export default class DefaultModifierRangeSelector extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <div>
           <label>Choose default modifier range (minimum):</label>
           <input
@@ -34,7 +34,7 @@ export default class DefaultModifierRangeSelector extends React.Component {
             max="10"
           />
         </div>
-      </React.Fragment>
-    )
+      </>
+    );
   }
 }

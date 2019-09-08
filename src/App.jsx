@@ -12,20 +12,24 @@ const { ipcRenderer } = window.require('electron');
 
 const makeModifierOverrideDefaults = () => {
   return modifierTabs
-    .map((tab) => tab.overrides)
-    .reduce((modifiers, acc) => [...acc, ...modifiers], [])
+    .map((tab) => {
+      return tab.overrides;
+    })
+    .reduce((modifiers, acc) => {
+      return [...acc, ...modifiers];
+    }, [])
     .map((modifier) => {
       return {
         [modifier.id]: {
           minimum: -10,
           maximum: 10,
-        }
-      }
+        },
+      };
     })
     .reduce((modifier, acc) => {
-      return { ...acc, ...modifier }
-    }, {})
-}
+      return { ...acc, ...modifier };
+    }, {});
+};
 
 class App extends React.Component {
   state = {
@@ -46,7 +50,7 @@ class App extends React.Component {
           </div>
           <QuantitySelector
             setNumOfSims={this.setNumOfSims}
-            value={this.state.numOfSims}
+            numOfSims={this.state.numOfSims}
           />
           <GenderChanceSelector
             setFemaleChance={this.setFemaleChance}
@@ -74,28 +78,32 @@ class App extends React.Component {
 
   renderModifierOverrides = () => {
     const setMinimum = (id, value) => {
-      this.setState({
-        modifierOverrides: {
-          ...this.state.modifierOverrides,
-          [id]: {
-            ...this.state.modifierOverrides[id],
-            minimum: value,
-          }
-        }
-      })
-    }
+      this.setState((prevState) => {
+        return {
+          modifierOverrides: {
+            ...prevState.modifierOverrides,
+            [id]: {
+              ...prevState.modifierOverrides[id],
+              minimum: value,
+            },
+          },
+        };
+      });
+    };
 
     const setMaximum = (id, value) => {
-      this.setState({
-        modifierOverrides: {
-          ...this.state.modifierOverrides,
-          [id]: {
-            ...this.state.modifierOverrides[id],
-            maximum: value,
-          }
-        }
-      })
-    }
+      this.setState((prevState) => {
+        return {
+          modifierOverrides: {
+            ...prevState.modifierOverrides,
+            [id]: {
+              ...prevState.modifierOverrides[id],
+              maximum: value,
+            },
+          },
+        };
+      });
+    };
 
     return (
       modifierTabs.map((tab) => {
@@ -108,91 +116,82 @@ class App extends React.Component {
               setMaximum={setMaximum}
               value={this.state.modifierOverrides[modifier.id]}
             />
-          )
-        })
+          );
+        });
       })
-
-    )
+    );
   }
 
   setNumOfSims = (event) => {
-    if (event.target.value === "") {
+    if (event.target.value === '') {
       this.setState({
-        numOfSims: "",
-      })
-    }
-    else if (parseInt(event.target.value) > 10) {
+        numOfSims: '',
+      });
+    } else if (Number(event.target.value) > 10) {
       this.setState({
-        numOfSims: 10
-      })
-    }
-    else {
+        numOfSims: 10,
+      });
+    } else {
       this.setState({
-        numOfSims: parseInt(event.target.value)
-      })
+        numOfSims: Number(event.target.value),
+      });
     }
   }
 
   setFemaleChance = (event) => {
     this.setState({
-      femaleChance: parseInt(event.target.value)
-    })
+      femaleChance: Number(event.target.value),
+    });
   }
 
   setModifierRangeMinimum = (event) => {
-    if (event.target.value === "") {
+    if (event.target.value === '') {
       this.setState({
-        modifierRangeMinimum: "",
-      })
-    }
-    else if (parseInt(event.target.value) > 10) {
+        modifierRangeMinimum: '',
+      });
+    } else if (Number(event.target.value) > 10) {
       this.setState({
         modifierRangeMinimum: 10,
-      })
-    }
-    else if (parseInt(event.target.value) < -10) {
+      });
+    } else if (Number(event.target.value) < -10) {
       this.setState({
         modifierRangeMinimum: -10,
-      })
-    }
-    else {
+      });
+    } else {
       this.setState({
-        modifierRangeMinimum: parseInt(event.target.value)
-      })
+        modifierRangeMinimum: Number(event.target.value),
+      });
     }
   }
 
   setModifierRangeMaximum = (event) => {
-    if (event.target.value === "") {
+    if (event.target.value === '') {
       this.setState({
-        modifierRangeMaximum: "",
-      })
-    }
-    else if (parseInt(event.target.value) > 10) {
+        modifierRangeMaximum: '',
+      });
+    } else if (Number(event.target.value) > 10) {
       this.setState({
         modifierRangeMaximum: 10,
-      })
-    }
-    else if (parseInt(event.target.value) < -10) {
+      });
+    } else if (Number(event.target.value) < -10) {
       this.setState({
         modifierRangeMaximum: -10,
-      })
-    }
-    else {
+      });
+    } else {
       this.setState({
-        modifierRangeMaximum: parseInt(event.target.value)
-      })
+        modifierRangeMaximum: Number(event.target.value),
+      });
     }
   }
 
   setTemperStrength = (event) => {
     this.setState({
-      temperStrength: parseInt(event.target.value)
-    })
+      temperStrength: Number(event.target.value),
+    });
   }
 
   isInvalid = () => {
-    if (this.state.numOfSims === "") {
+    if (this.state.numOfSims === '') {
       return true;
     }
     if (this.state.modifierRangeMinimum > this.state.modifierRangeMaximum) {

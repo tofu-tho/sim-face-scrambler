@@ -6,14 +6,20 @@ const { bool, func } = PropTypes;
 export default class ScrambleButton extends React.Component {
   static propTypes = {
     scramble: func.isRequired,
-    isValid: bool.isRequired,
+    disabled: bool.isRequired,
   }
 
   render() {
     return (
       <div>
-        <button onClick={this.props.scramble} disabled={this.props.isInvalid}>Scramble!</button>
+        <button
+          onClick={this.props.scramble}
+          disabled={this.props.disabled}
+          type="submit"
+        >
+          Scramble!
+        </button>
       </div>
-    )
+    );
   }
 }

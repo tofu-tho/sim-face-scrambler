@@ -31,14 +31,14 @@ export default class ModifierOverride extends React.Component {
           max="10"
         />
       </div>
-    )
+    );
   }
 
   setMinimum = (event) => {
-    this.props.setMinimum(this.props.modifier.id, parseInt(event.target.value));
+    this.props.setMinimum(this.props.modifier.id, Number(event.target.value));
   }
 
   setMaximum = (event) => {
-    this.props.setMaximum(this.props.modifier.id, parseInt(event.target.value));
+    this.props.setMaximum(this.props.modifier.id, Number(event.target.value));
   }
 }

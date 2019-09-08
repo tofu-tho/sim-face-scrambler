@@ -20,10 +20,16 @@ export default class GenderChanceSelector extends React.Component {
           min="0"
           max="100"
         />
-        <div>Chance of female: {this.props.femaleChance}</div>
-        <div>Chance of male: {this.getMaleChance()}</div>
+        <div>
+          Chance of female:
+          {` ${this.props.femaleChance}`}
+        </div>
+        <div>
+          Chance of male:
+          {` ${this.getMaleChance()}`}
+        </div>
       </div>
-    )
+    );
   }
 
   getMaleChance = () => {

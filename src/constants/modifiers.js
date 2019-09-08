@@ -8,7 +8,7 @@ export const faceOverrides = [
   { name: 'Cheekbone Size', id: 'cheekboneSize' },
   { name: 'Cheekbone Up-Down', id: 'cheekboneUpDown' },
   { name: 'Ear Size', id: 'earSize' },
-]
+];
 
 export const browOverrides = [
   { name: 'Brow Thickness', id: 'browThickness' },
@@ -18,7 +18,7 @@ export const browOverrides = [
   { name: 'Brow Orbit Shape', id: 'browOrbitShape' },
   { name: 'Forehead In-Out', id: 'foreheadInOut' },
   { name: 'Brow In-Out', id: 'browInOut' }
-]
+];
 
 export const eyeOverrides = [
   { name: 'Eye Size', id: 'eyeSize' },
@@ -29,7 +29,7 @@ export const eyeOverrides = [
   { name: 'Eye Deepness', id: 'eyeDeepness' },
   { name: 'Eyelash Size', id: 'eyelashSize' },
   { name: 'Eyes Rotate', id: 'eyesRotate' },
-]
+];
 
 export const noseOverrides = [
   { name: 'Nose Size', id: 'noseSize' },
@@ -44,7 +44,7 @@ export const noseOverrides = [
   { name: 'Bridge In-Out', id: 'bridgeInOut' },
   { name: 'Bridge Width', id: 'bridgeWidth' },
   { name: 'Nose In-Out', id: 'noseInOut' },
-]
+];
 
 export const mouthOverrides = [
   { name: 'Mouth Width', id: 'mouthWidth' },
@@ -57,7 +57,7 @@ export const mouthOverrides = [
   { name: 'Lower Lip Thickness', id: 'lowerLipThickness' },
   { name: 'Mouth Corner Fwd-Back', id: 'mouthCornerFwdBack' },
   { name: 'Mouth In-Out', id: 'mouthInOut' },
-]
+];
 
 export const jawOverrides = [
   { name: 'Chin Up-Down', id: 'chinUpDown' },
@@ -67,7 +67,7 @@ export const jawOverrides = [
   { name: 'Jaw Square-Angled', id: 'jawSquareAngled' },
   { name: 'Jaw Width', id: 'jawWidth' },
   { name: 'Jaw Taper', id: 'jawTaper' },
-]
+];
 
 export const modifierTabs = [
   { id: 'face', name: 'Face', overrides: faceOverrides },
@@ -76,4 +76,4 @@ export const modifierTabs = [
   { id: 'nose', name: 'Nose', overrides: noseOverrides },
   { id: 'mouth', name: 'Mouth', overrides: mouthOverrides },
   { id: 'jaw', name: 'Jaw', overrides: jawOverrides },
-]
+];
