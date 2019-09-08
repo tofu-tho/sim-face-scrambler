@@ -69,7 +69,9 @@ class App extends React.Component {
             modifierRangeMinimum={this.state.modifierRangeMinimum}
             modifierRangeMaximum={this.state.modifierRangeMaximum}
           />
-          {this.renderModifierOverrides()}
+          <div className="modifier-overrides-container">
+            {this.renderModifierOverrides()}
+          </div>
         </header>
       </div>
     );

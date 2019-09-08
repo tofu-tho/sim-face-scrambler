@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ModifierImage from './modifierImage';
 
 const {
   string, func, shape, number,
@@ -25,26 +26,29 @@ export default class ModifierOverride extends React.Component {
 
   render() {
     return (
-      <div>
-        <label>
-          {this.props.modifier.name}
-          Minimum
-        </label>
-        <input
-          onInput={this.setMinimum}
-          value={this.props.value.minimum}
-          type="number"
-          min="-10"
-          max="10"
-        />
-        <label>Maximum</label>
-        <input
-          onInput={this.setMaximum}
-          value={this.props.value.maximum}
-          type="number"
-          min="-10"
-          max="10"
-        />
+      <div className="modifier-override-container">
+        <div className="modifier-override-images">
+          <ModifierImage id={this.props.modifier.id} direction="less" />
+          <ModifierImage id={this.props.modifier.id} direction="more" />
+        </div>
+        <div className="modifier-override-slider">
+          <div>Min</div>
+          <input
+            onInput={this.setMinimum}
+            value={this.props.value.minimum}
+            type="number"
+            min="-10"
+            max="10"
+          />
+          <div>Max</div>
+          <input
+            onInput={this.setMaximum}
+            value={this.props.value.maximum}
+            type="number"
+            min="-10"
+            max="10"
+          />
+        </div>
       </div>
     );
   }
