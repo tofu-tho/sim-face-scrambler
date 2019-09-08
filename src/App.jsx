@@ -5,6 +5,7 @@ import GenderChanceSelector from './genderChanceSelector';
 import TemperStrengthSelector from './temperStrengthSelector';
 import DefaultModifierRangeSelector from './defaultModifierRangeSelector';
 import ScrambleButton from './scrambleButton';
+import Title from './title';
 
 import { modifierTabs } from './constants/modifiers';
 
@@ -45,9 +46,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <div>
-            Sim Face Scrambler
-          </div>
+          <Title />
           <QuantitySelector
             setNumOfSims={this.setNumOfSims}
             numOfSims={this.state.numOfSims}
