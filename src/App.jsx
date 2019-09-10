@@ -37,8 +37,8 @@ class App extends React.Component {
     numOfSims: 1,
     femaleChance: 50,
     temperStrength: 33,
-    modifierRangeMinimum: -10,
-    modifierRangeMaximum: 10,
+    defaultModifierRangeMinimum: -10,
+    defaultModifierRangeMaximum: 10,
     modifierOverrides: makeModifierOverrideDefaults(),
   }
 
@@ -64,10 +64,10 @@ class App extends React.Component {
             temperStrength={this.state.temperStrength}
           />
           <DefaultModifierRangeSelector
-            setModifierRangeMinimum={this.setModifierRangeMinimum}
-            setModifierRangeMaximum={this.setModifierRangeMaximum}
-            modifierRangeMinimum={this.state.modifierRangeMinimum}
-            modifierRangeMaximum={this.state.modifierRangeMaximum}
+            setDefaultModifierRangeMinimum={this.setDefaultModifierRangeMinimum}
+            setDefaultModifierRangeMaximum={this.setDefaultModifierRangeMaximum}
+            defaultModifierRangeMinimum={this.state.defaultModifierRangeMinimum}
+            defaultModifierRangeMaximum={this.state.defaultModifierRangeMaximum}
           />
           <div className="modifier-overrides-container">
             {this.renderModifierOverrides()}
@@ -145,42 +145,42 @@ class App extends React.Component {
     });
   }
 
-  setModifierRangeMinimum = (event) => {
+  setDefaultModifierRangeMinimum = (event) => {
     if (event.target.value === '') {
       this.setState({
-        modifierRangeMinimum: '',
+        defaultModifierRangeMinimum: '',
       });
     } else if (Number(event.target.value) > 10) {
       this.setState({
-        modifierRangeMinimum: 10,
+        defaultModifierRangeMinimum: 10,
       });
     } else if (Number(event.target.value) < -10) {
       this.setState({
-        modifierRangeMinimum: -10,
+        defaultModifierRangeMinimum: -10,
       });
     } else {
       this.setState({
-        modifierRangeMinimum: Number(event.target.value),
+        defaultModifierRangeMinimum: Number(event.target.value),
       });
     }
   }
 
-  setModifierRangeMaximum = (event) => {
+  setDefaultModifierRangeMaximum = (event) => {
     if (event.target.value === '') {
       this.setState({
-        modifierRangeMaximum: '',
+        defaultModifierRangeMaximum: '',
       });
     } else if (Number(event.target.value) > 10) {
       this.setState({
-        modifierRangeMaximum: 10,
+        defaultModifierRangeMaximum: 10,
       });
     } else if (Number(event.target.value) < -10) {
       this.setState({
-        modifierRangeMaximum: -10,
+        defaultModifierRangeMaximum: -10,
       });
     } else {
       this.setState({
-        modifierRangeMaximum: Number(event.target.value),
+        defaultModifierRangeMaximum: Number(event.target.value),
       });
     }
   }
@@ -195,7 +195,7 @@ class App extends React.Component {
     if (this.state.numOfSims === '') {
       return true;
     }
-    if (this.state.modifierRangeMinimum > this.state.modifierRangeMaximum) {
+    if (this.state.defaultModifierRangeMinimum > this.state.defaultModifierRangeMaximum) {
       return true;
     }
     return false;
