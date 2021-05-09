@@ -6,6 +6,7 @@ import TemperStrengthSelector from './temperStrengthSelector';
 import DefaultModifierRangeSelector from './defaultModifierRangeSelector';
 import ScrambleButton from './scrambleButton';
 import Title from './title';
+import ModifierTabs from './modifierTabs';
 
 import { modifierTabs } from './constants/modifiers';
 
@@ -40,6 +41,7 @@ class App extends React.Component {
     defaultModifierRangeMinimum: -10,
     defaultModifierRangeMaximum: 10,
     modifierOverrides: makeModifierOverrideDefaults(),
+    selectedTab: modifierTabs[0].id,
   }
 
   render() {
@@ -69,12 +71,22 @@ class App extends React.Component {
             defaultModifierRangeMinimum={this.state.defaultModifierRangeMinimum}
             defaultModifierRangeMaximum={this.state.defaultModifierRangeMaximum}
           />
+          <ModifierTabs
+            selectedTab={this.state.selectedTab}
+            handleSelectTab={this.handleSelectTab}
+          />
           <div className="modifier-overrides-container">
             {this.renderModifierOverrides()}
           </div>
         </header>
       </div>
     );
+  }
+
+  handleSelectTab = (tab) => {
+    this.setState({
+      selectedTab: tab.id,
+    });
   }
 
   renderModifierOverrides = () => {
@@ -108,17 +120,21 @@ class App extends React.Component {
 
     return (
       modifierTabs.map((tab) => {
-        const modifiers = tab.overrides;
-        return modifiers.map((modifier) => {
-          return (
-            <ModifierOverride
-              modifier={modifier}
-              setMinimum={setMinimum}
-              setMaximum={setMaximum}
-              value={this.state.modifierOverrides[modifier.id]}
-            />
-          );
-        });
+        if (tab.id === this.state.selectedTab) {
+          const modifiers = tab.overrides;
+          return modifiers.map((modifier) => {
+            return (
+              <ModifierOverride
+                modifier={modifier}
+                setMinimum={setMinimum}
+                setMaximum={setMaximum}
+                value={this.state.modifierOverrides[modifier.id]}
+              />
+            );
+          });
+        }
+
+        return null;
       })
     );
   }

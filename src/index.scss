@@ -45,6 +45,18 @@ code {
   }
 }
 
+.modifier-tabs-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+
+  .modifier-tab {
+    &.selected {
+      font-weight: bold;
+    }
+  }
+}
+
 .modifier-overrides-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
